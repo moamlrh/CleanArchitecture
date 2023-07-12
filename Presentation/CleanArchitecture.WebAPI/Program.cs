@@ -1,10 +1,7 @@
 using MediatR;
-using CleanArchitecture.Application.Features;
-using CleanArchitecture.Application.Repositories;
-using CleanArchitecture.Infrastructure.Persistence.Repositories;
-using CleanArchitecture.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
+using CleanArchitecture.Application;
 using CleanArchitecture.WebApi.Middlewares;
+using CleanArchitecture.Infrastructure.Persistence;
 
 namespace CleanArchitecture.WebApi;
 
@@ -20,11 +17,8 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-
-        builder.Services.AddMediatR(c => c.RegisterServicesFromAssembly(typeof(CreateUserHandler).Assembly));
-        builder.Services.AddAutoMapper(typeof(CreateUserMapper).Assembly);
-        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-        builder.Services.AddDbContext<ApplicationDbContext>(opts => opts.UseSqlServer("ConnectionStringHere"));
+        builder.Services.ConfigureApplication();
+        builder.Services.ConfigureInfrastructure();
 
 
         var app = builder.Build();

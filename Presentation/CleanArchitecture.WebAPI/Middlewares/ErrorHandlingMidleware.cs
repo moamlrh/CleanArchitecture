@@ -1,7 +1,7 @@
 using System.Net;
+using CleanArchitecture.Application.Common;
 using CleanArchitecture.Domain.Errors;
 using Microsoft.AspNetCore.Diagnostics;
-using CleanArchitecture.Application.Common.Exceptions;
 
 namespace CleanArchitecture.WebApi.Middlewares;
 
