@@ -1,5 +1,5 @@
 
-namespace CleanArchitecture.Application.Exceptions;
+namespace CleanArchitecture.Application.Common;
 
 
 public class UserNotFoundException : Exception
