@@ -5,7 +5,7 @@ namespace CleanArchitecture.Application.Common;
 
 public interface IBaseRepository<T> where T : BaseEntity
 {
-    void Create(T entity);
+    Task Create(T entity);
     void Delete(T entity);
     void Update(T entity);
     IQueryable<T> GetAll();

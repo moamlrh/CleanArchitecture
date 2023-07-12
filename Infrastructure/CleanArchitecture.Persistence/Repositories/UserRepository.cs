@@ -16,5 +16,5 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     {
         throw new NotImplementedException();
     }
-    public Task CreateUser(User user) => Create(user);
+    public async Task CreateUser(User user) => await Create(user);
 }

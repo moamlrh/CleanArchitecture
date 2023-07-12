@@ -13,11 +13,9 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         this.dbContext = dbContext;
     }
-    public void Create(T entity) => dbContext.Set<T>().Add(entity);
+    public async Task Create(T entity) => await dbContext.Set<T>().AddAsync(entity);
     public void Delete(T entity) => dbContext.Set<T>().Remove(entity);
     public void Update(T entity) => dbContext.Set<T>().Update(entity);
-
     public IQueryable<T> GetAll() => dbContext.Set<T>();
-
     public IQueryable<T> GetByCondition(Expression<Func<T, bool>> condition) => dbContext.Set<T>().Where(condition);
 }
