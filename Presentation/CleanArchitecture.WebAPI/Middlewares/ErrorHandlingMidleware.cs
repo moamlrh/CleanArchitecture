@@ -1,4 +1,6 @@
+using System.ComponentModel.DataAnnotations;
 using System.Net;
+using System.Text.Json;
 using CleanArchitecture.Application.Common;
 using CleanArchitecture.Domain.Errors;
 using Microsoft.AspNetCore.Diagnostics;
@@ -23,15 +25,17 @@ public static class ErrorHandlingMidleware
                     {
                         NotFoundException => StatusCodes.Status404NotFound,
                         BadRequestException => StatusCodes.Status400BadRequest,
+                        ValidationException => StatusCodes.Status422UnprocessableEntity,
                         _ => StatusCodes.Status500InternalServerError
                     };
-
-                    var response = new ErrorDetail(
-                        context.Response.StatusCode,
-                        contextFeatures.Error.Message
-                    );
-
-                    await context.Response.WriteAsync(response.ToString());
+                    if (contextFeatures.Error is ValidationException e)
+                        await context.Response.WriteAsync(JsonSerializer.Serialize(new { e.Message }));
+                    else
+                    {
+                        await context.Response.WriteAsync(new ErrorDetail(
+                            context.Response.StatusCode,
+                            contextFeatures.Error.Message).ToString());
+                    }
                 }
             });
         });
