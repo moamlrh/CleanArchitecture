@@ -6,23 +6,23 @@ namespace CleanArchitecture.WebApi.Controllers;
 [Route("/api/users")]
 public class UserController : ControllerBase
 {
-    private readonly IMediator mediator;
-    public UserController(IMediator _mediator)
+    private readonly ISender _sender;
+    public UserController(ISender sender)
     {
-        mediator = _mediator;
+        _sender = sender;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetUser([FromQuery] GetUserRequest request)
     {
-        var user = await mediator.Send(request);
+        var user = await _sender.Send(request);
         return Ok(user);
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
     {
-        await mediator.Send(request);
+        await _sender.Send(request);
         return Ok();
     }
 }
