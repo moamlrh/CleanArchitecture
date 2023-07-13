@@ -1,9 +1,7 @@
-using CleanArchitecture.Application.Features;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
+using CleanArchitecture.Application.Features;
 namespace CleanArchitecture.WebApi.Controllers;
-
 [ApiController]
 [Route("/api/users")]
 public class UserController : ControllerBase

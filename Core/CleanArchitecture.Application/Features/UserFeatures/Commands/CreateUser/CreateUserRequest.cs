@@ -2,11 +2,5 @@ using MediatR;
 
 namespace CleanArchitecture.Application.Features
 {
-    public  class CreateUserRequest : IRequest
-    
-    {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+    public record CreateUserRequest(string Name, string Email, string Password) : IRequest;
 }
