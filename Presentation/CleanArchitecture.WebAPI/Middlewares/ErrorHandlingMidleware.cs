@@ -25,7 +25,7 @@ public static class ErrorHandlingMidleware
                     {
                         NotFoundException => StatusCodes.Status404NotFound,
                         BadRequestException => StatusCodes.Status400BadRequest,
-                        ValidationException => StatusCodes.Status422UnprocessableEntity,
+                        ValidationException => StatusCodes.Status422UnprocessableEntity, // you can replace it with you own validation exceptions class
                         _ => StatusCodes.Status500InternalServerError
                     };
                     if (contextFeatures.Error is ValidationException e)
