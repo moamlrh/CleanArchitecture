@@ -20,8 +20,8 @@ public class Program
         // Services configuration
         builder.Services.ConfigureCorsPolicy();
         // Layers configuration
-        builder.Services.ConfigureApplication();
-        builder.Services.ConfigureInfrastructure();
+        builder.Services.ConfigureApplicationLayer();
+        builder.Services.ConfigureInfrastructureLayer();
 
 
         var app = builder.Build();

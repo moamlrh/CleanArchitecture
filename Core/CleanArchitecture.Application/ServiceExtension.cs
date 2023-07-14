@@ -7,7 +7,7 @@ namespace CleanArchitecture.Application;
 
 public static class ServiceExtensions
 {
-    public static void ConfigureApplication(this IServiceCollection services)
+    public static void ConfigureApplicationLayer(this IServiceCollection services)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));

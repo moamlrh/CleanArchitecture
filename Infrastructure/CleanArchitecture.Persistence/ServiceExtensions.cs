@@ -10,7 +10,7 @@ namespace CleanArchitecture.Infrastructure.Persistence;
 
 public static class ServiceExtensions
 {
-    public static void ConfigureInfrastructure(this IServiceCollection services)
+    public static void ConfigureInfrastructureLayer(this IServiceCollection services)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddDbContext<ApplicationDbContext>(opts => opts.UseSqlServer("ConnectionStringHere"));
