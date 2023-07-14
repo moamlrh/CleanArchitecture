@@ -1,4 +1,3 @@
-using MediatR;
 using CleanArchitecture.Application;
 using CleanArchitecture.WebApi.Middlewares;
 using CleanArchitecture.Infrastructure.Persistence;
