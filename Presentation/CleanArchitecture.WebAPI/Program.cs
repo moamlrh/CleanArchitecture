@@ -2,6 +2,7 @@ using MediatR;
 using CleanArchitecture.Application;
 using CleanArchitecture.WebApi.Middlewares;
 using CleanArchitecture.Infrastructure.Persistence;
+using CleanArchitecture.WebApi.Extensions;
 
 namespace CleanArchitecture.WebApi;
 
@@ -17,6 +18,9 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        // Services configuration
+        builder.Services.ConfigureCorsPolicy();
+        // Layers configuration
         builder.Services.ConfigureApplication();
         builder.Services.ConfigureInfrastructure();
 
